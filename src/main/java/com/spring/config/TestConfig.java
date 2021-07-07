@@ -1,0 +1,29 @@
+package com.spring.config;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+import com.spring.entities.User;
+import com.spring.repositories.UserRepositories;
+
+@Configuration
+@Profile("test")
+public class TestConfig implements CommandLineRunner {
+
+	@Autowired
+	private UserRepositories userRepositories;
+	
+	@Override
+	public void run(String... args) throws Exception {
+		User u1 = new User(null, "pedro", "p@gmail", "99999", "12345");
+		User u2 = new User(null, "nuna", "n@gmail", "55555", "67890");
+		
+		userRepositories.saveAll(Arrays.asList(u1, u2));
+		
+	}
+
+}
