@@ -13,7 +13,7 @@ import com.spring.entities.Order;
 import com.spring.services.OrderService;
 
 @RestController
-@RequestMapping(value = "/Order")
+@RequestMapping(value = "/order")
 public class OrderResource {
 	
 	@Autowired

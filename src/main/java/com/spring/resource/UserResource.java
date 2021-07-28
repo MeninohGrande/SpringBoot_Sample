@@ -13,7 +13,7 @@ import com.spring.entities.User;
 import com.spring.services.UserService;
 
 @RestController
-@RequestMapping(value = "/User")
+@RequestMapping(value = "/user")
 public class UserResource {
 	
 	@Autowired
