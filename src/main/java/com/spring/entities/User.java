@@ -12,12 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	List<Order> order = new ArrayList<>();
 	
