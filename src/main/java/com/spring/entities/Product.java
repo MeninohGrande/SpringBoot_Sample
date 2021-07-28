@@ -1,12 +1,17 @@
 package com.spring.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +25,12 @@ public class Product implements Serializable {
 	private Integer id;
 	private String name, description, imgUrl;
 	private Double price;
+	
+	@ManyToMany
+	@JoinTable(name = "product_has_category", 
+	joinColumns = @JoinColumn(name = "FK_product"),
+	inverseJoinColumns = @JoinColumn(name = "FK_category"))
+	private Set<Category> categories = new HashSet<>();
 	
 	public Product() {
 	}
@@ -71,6 +82,11 @@ public class Product implements Serializable {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+
+	public Set<Category> getCategories() {
+		return categories;
 	}
 
 	@Override
